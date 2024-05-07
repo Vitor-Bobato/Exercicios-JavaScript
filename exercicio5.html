@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 5</title>
+</head>
+<body>
+    <h1>Exercício 5</h1>
+
+    <form id="letras">
+        <label for="letra">Digite a primeira letra: </label>
+        <input type="text" id="letra" name="letra">
+
+        <button type="submit" id="botao">veja!!! :D</button>
+    </form>
+</body>
+
+<script>
+    const formulario = document.getElementById('letras');
+    formulario.addEventListener('submit', function(evento)
+       {
+           evento.preventDefault();
+
+           const letra = document.getElementById('letra').value;
+           
+
+
+           if(letra === '')
+           {
+               alert('DIGITE ESSA LETRAAAAAAAAAAAA');
+               return false;
+           } 
+                 else 
+                    {
+                        alert('letra ' + letra);
+                    }
+       })
+</script>
+</html>

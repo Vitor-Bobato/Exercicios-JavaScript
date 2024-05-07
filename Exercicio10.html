@@ -1,0 +1,77 @@
+<!-- 10)Escreva um programa em JavaScript que exiba na tela a média dos
+elementos de uma matriz. -->
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades EX 10</title>
+</head>
+
+<body>
+    
+    <form id="matriz">
+
+        <label for="linha">Número de linhas:</label>
+        <input type="number" id="linhas" name="linhas">
+        
+        <label for="coluna">Número de colunas:</label>
+        <input type="number" id="colunas" name="colunas">
+        
+        <button type="submit">Enviar</button>
+        
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        
+        const formulario = document.getElementById('matriz');
+        
+        formulario.addEventListener('submit', function(evento)
+        {
+            evento.preventDefault(); // Impede o envio do formulário
+
+            const linhas = parseInt(document.getElementById("linhas").value);
+            const colunas = parseInt(document.getElementById("colunas").value);
+            let col_lin = linhas + colunas;
+
+            let matriz = []; // Inicializa uma matriz vazia
+            let matrizHTML = "<h3>Matriz</h3><table border='1'>"; // Aqui fica a matriz e uma borda pra não ficar tão feio
+
+            for (let i = 0; i < linhas; i++) {
+                matriz[i] = []; // Inicializa uma nova linha
+                matrizHTML += "<tr>";
+                for (let j = 0; j < colunas; j++) {
+                    // Solicita ao usuário o valor para a posição [i][j]
+                    matriz[i][j] = parseInt(prompt(`Insira o valor da posição [${i + 1}][${j + 1}]:`));
+                    // Adiciona o valor
+                    matrizHTML += `<td>${matriz[i][j]}</td>`;
+                }
+                matrizHTML += "</tr>"; // Fecha a linha
+            }
+
+            matrizHTML += "</table>"; // Fecha a tabela
+            document.getElementById("resultado").innerHTML = matrizHTML; // Exibe a matriz
+
+            // Calcula a soma dos elementos da matriz
+            let soma = 0;
+            for (let i = 0; i < linhas; i++) {
+                for (let j = 0; j < colunas; j++) {
+                    soma += matriz[i][j]; // Adiciona o valor do elemento à soma
+
+                }
+            }
+
+            let media = soma / col_lin;
+
+            // Exibe a soma dos elementos da matriz
+            document.getElementById("resultado").innerHTML += `<p>A média dos elementos da matriz é: ${media}</p>`;
+        });
+    </script>
+
+</body>
+</html>
